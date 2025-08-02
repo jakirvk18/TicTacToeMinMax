@@ -2,171 +2,160 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe Rules</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="images/logo.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            /* A dark blue-gray background to match the image */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe Rules</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="icon" href="images/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+    }
 
-        .board-tile {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-        }
+    .board-tile {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
 
-        .board-x {
-            color: #ff0000;
-            /* A green color for 'X' */
-        }
+    .board-x {
+      color: #ff0000;
+    }
 
-        .board-o {
-            color: #0080ff;
-            /* A red color for 'O' */
-        }
+    .board-o {
+      color: #0080ff;
+    }
 
-        .beats {
-            animation: beat 0.5s infinite alternate;
-        }
+    .beats {
+      animation: beat 0.5s infinite alternate;
+    }
 
-        @keyframes beat {
-            0% {
-                transform: scale(1);
-            }
+    @keyframes beat {
+      0% {
+        transform: scale(1);
+      }
 
-            100% {
-                transform: scale(1.05);
-            }
-        }
-    </style>
+      100% {
+        transform: scale(1.05);
+      }
+    }
+  </style>
 </head>
 
 <body class="flex items-center justify-center min-h-screen p-4">
-    <a href="./index.html">
-        <button
-            class="flex items-center justify-center w-[100px] h-10 bg-white/30 text-white rounded-md shadow-lg absolute top-4 left-4 hover:bg-[#2c3e50] transition-colors duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back
-        </button>
-    </a>
-    <div
-        class="w-full  mx-auto flex flex-col items-center justify-center space-y-6 p-6  rounded-2xl shadow-lg max-w-[80%]">
-        <!-- Header -->
-        <header class="flex items-center space-x-4 mb-8">
 
-            <h1 class="text-white text-2xl font-semibold flex-grow text-center">Game Rules</h1>
-            <div class="w-10"></div> <!-- Placeholder to balance the header layout -->
-        </header>
+  <!-- Back Button -->
+  <a href="./index.html" class="absolute top-4 left-4">
+    <button
+      class="flex items-center justify-center w-[100px] h-10 bg-white/30 text-white rounded-md shadow-lg hover:bg-[#2c3e50] transition-colors duration-200">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back
+    </button>
+  </a>
 
-        <!-- Rules Container -->
-        <div class="space-y-4 w-full justify-center flex items-center flex-col">
-            <!-- Win Rule -->
-            <div class="bg-white/20 p-6 rounded-md flex items-start space-x-4 shadow-lg h-[20%] w-[80%]">
-                <div class="text-3xl">🏆</div>
-                <div class="w-full flex justify-between flex-col lg:flex-row items-start">
-                    <div>
-                        <h3 class="text-white text-xl font-bold mb-2">WIN</h3>
-                        <p class="text-gray-300 text-xl mb-4">Get 3 marks in a row. Player wins, game ends.</p>
-                        <!-- Win Board Example -->
-                    </div>
-                    <div class="grid grid-cols-3 gap-2 p-4 items-center justify-center w-fit rounded-xl">
-                        <div class="board-tile bg-green-200 beats"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-green-200 beats"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-green-200 beats"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-white/60"></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"></div>
-                    </div>
-                </div>
-            </div>
+  <!-- Main Container -->
+  <div
+    class="w-full mx-auto flex flex-col items-center justify-center space-y-6 p-6 rounded-2xl shadow-lg max-w-[80%]">
 
-            <!-- Defeat Rule -->
-            <div class="bg-white/20 p-6 rounded-md flex items-start space-x-4 shadow-lg w-[80%] h-[20%]">
-                <div class="text-3xl">💔</div>
-                <div class="w-full flex justify-between flex-col lg:flex-row items-start">
-                    <div>
-                        <h3 class="text-white text-xl font-bold mb-2">DEFEAT</h3>
-                    <p class="text-gray-300 text-xl mb-4">Opponent gets 3 in a row. Player loses, game ends.</p>
-                    </div>
-                    <!-- Defeat Board Example -->
-                    <div class="grid grid-cols-3 gap-2 p-4 items-center justify-center w-fit rounded-xl">
-                        <div class="board-tile bg-green-200 beats"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-green-200 beats"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"></div>
-                        <div class="board-tile bg-white/60"></div>
-                        <div class="board-tile bg-white/60"></div>
-                        <div class="board-tile bg-green-200 beats"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                    </div>
-                </div>
-            </div>
+    <!-- Header -->
+    <header class="flex items-center space-x-4 mb-8 w-full justify-center">
+      <h1 class="text-white text-2xl font-semibold text-center">Game Rules</h1>
+    </header>
 
-            <!-- Draw Rule -->
-            <div class="bg-white/20 p-6 rounded-md flex items-start space-x-4 shadow-lg w-[80%] h-[20%]">
-                <div class="text-3xl">🤝</div>
-                <div class="w-full flex justify-between flex-col lg:flex-row items-start">
-                    <div>
-                        <h3 class="text-white text-xl font-bold mb-2">DRAW</h3>
-                    <p class="text-gray-300 text-xl mb-4">Board full, no 3 in a row. No winner, game ends.</p>
-                    </div>
-                    <!-- Draw Board Example -->
-                    <div class="grid grid-cols-3 gap-1 p-2 items-center justify-center w-fit rounded-xl">
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
-                                    class="fa-solid fa-x"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                        <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
-                                    class="fa-solid fa-o"></i></span></div>
-                    </div>
-                </div>
-            </div>
+    <!-- Rules Section -->
+    <div class="space-y-6 w-full flex flex-col items-center justify-center">
+
+      <!-- WIN Rule -->
+      <div class="bg-white/20 p-6 rounded-md shadow-lg w-[80%] flex flex-col lg:flex-row items-start justify-between">
+        <div class="flex items-center space-x-4 mb-4 lg:mb-0">
+          <div class="text-3xl">🏆</div>
+          <div>
+            <h3 class="text-white text-xl font-bold mb-2">WIN</h3>
+            <p class="text-gray-300 text-xl">Get 3 marks in a row. Player wins, game ends.</p>
+          </div>
         </div>
+        <div class="grid grid-cols-3 gap-2 p-4 rounded-xl">
+          <div class="board-tile bg-green-200 beats"><span class="board-o font-bold"><i
+                class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-green-200 beats"><span class="board-o font-bold"><i
+                class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-green-200 beats"><span class="board-o font-bold"><i
+                class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-white/60"></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
+                class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
+                class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i
+                class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"></div>
+        </div>
+      </div>
+
+      <!-- DEFEAT Rule -->
+      <div class="bg-white/20 p-6 rounded-md shadow-lg w-[80%] flex flex-col lg:flex-row items-start justify-between">
+        <div class="flex items-center space-x-4 mb-4 lg:mb-0">
+          <div class="text-3xl">💔</div>
+          <div>
+            <h3 class="text-white text-xl font-bold mb-2">DEFEAT</h3>
+            <p class="text-gray-300 text-xl">Opponent gets 3 in a row. Player loses, game ends.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 p-4 rounded-xl">
+          <div class="board-tile bg-green-200 beats"><span class="board-x font-bold"><i
+                class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
+                class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
+                class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i
+                class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-green-200 beats"><span class="board-x font-bold"><i
+                class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"></div>
+          <div class="board-tile bg-white/60"></div>
+          <div class="board-tile bg-white/60"></div>
+          <div class="board-tile bg-green-200 beats"><span class="board-x font-bold"><i
+                class="fa-solid fa-x"></i></span></div>
+        </div>
+      </div>
+
+      <!-- DRAW Rule -->
+      <div class="bg-white/20 p-6 rounded-md shadow-lg w-[80%] flex flex-col lg:flex-row items-start justify-between">
+        <div class="flex items-center space-x-4 mb-4 lg:mb-0">
+          <div class="text-3xl">🤝</div>
+          <div>
+            <h3 class="text-white text-xl font-bold mb-2">DRAW</h3>
+            <p class="text-gray-300 text-xl">Board full, no 3 in a row. No winner, game ends.</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-3 gap-1 p-2 rounded-xl">
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-x font-bold"><i class="fa-solid fa-x"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i class="fa-solid fa-o"></i></span></div>
+          <div class="board-tile bg-white/60"><span class="board-o font-bold"><i class="fa-solid fa-o"></i></span></div>
+        </div>
+      </div>
+
     </div>
-    
+  </div>
+
 </body>
 
 </html>
