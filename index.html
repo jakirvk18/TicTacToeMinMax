@@ -2,133 +2,141 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tic-Tac-Toe-AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic-Tac-Toe-AI</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="images/logo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="images/logo.png" />
 </head>
 
 <body class="min-h-screen flex items-center justify-center">
-    <button id="theme-toggle"
-        class="absolute top-4 right-4 bg-[var(--buttons-bg)] text-[var(--text-color)] py-4 px-6 rounded-md shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95">
-        <i class="fas fa-sun" id="theme-icon"></i>
-    </button>
 
-    <button id="back-btn"
-        class="hidden absolute top-4 left-4 bg-[var(--buttons-bg)] hover:bg-gray-700 text-[var(--text-color)] font-bold py-4 px-6 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105 active:scale-95">
-        <i class="fas fa-arrow-left mr-2"></i>Back
-    </button>
+  <!-- Theme Toggle -->
+  <button id="theme-toggle"
+    class="absolute top-4 right-4 bg-[var(--buttons-bg)] text-[var(--text-color)] py-4 px-6 rounded-md shadow-lg transition-transform duration-200 hover:scale-110 active:scale-95">
+    <i class="fas fa-sun" id="theme-icon"></i>
+  </button>
 
-    <div id="game-container" class="flex flex-col items-center justify-center w-full">
+  <!-- Back Button -->
+  <button id="back-btn"
+    class="hidden absolute top-4 left-4 bg-[var(--buttons-bg)] hover:bg-gray-700 text-[var(--text-color)] font-bold py-4 px-6 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105 active:scale-95">
+    <i class="fas fa-arrow-left mr-2"></i>Back
+  </button>
 
+  <!-- Game Container -->
+  <div id="game-container" class="flex flex-col items-center justify-center w-full px-4 sm:px-6 max-w-md mx-auto">
 
-
-
-        <div id="start-screen" class="flex flex-col items-center space-y-4 w-full beats">
-            <div class="relative inline-flex items-center justify-center gap-4 group active:scale-95">
-                <div
-                    class="absolute inset-0 duration-1000 opacity-60 transitiona-all bg-gradient-to-r from-indigo-500 via-pink-500 to-red-500 rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200">
-                </div>
-                <button id="start-btn"
-                    class="group relative inline-flex items-center justify-center text-base rounded-xl bg-[var(--startbutton-bg)] px-8 py-3 font-semibold text-white transition-all duration-200  hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
-                    title="minmax-ai">Play Tic Tac Toe with AI
-                </button>
-            </div>
-
+    <!-- Start Screen -->
+    <div id="start-screen" class="flex flex-col items-center space-y-4 w-full beats">
+      <div class="relative inline-flex items-center justify-center gap-4 group active:scale-95">
+        <div
+          class="absolute inset-0 duration-1000 opacity-60 transitiona-all bg-gradient-to-r from-indigo-500 via-pink-500 to-red-500 rounded-xl blur-lg filter group-hover:opacity-100 group-hover:duration-200">
         </div>
-
-        <div id="symbol-select-screen" class="hidden flex-col items-center space-y-4 w-full">
-            <p class="text-sm font-semibold text-center text-[var(--text-color)]">Select Your Symbol</p>
-            <div class="flex space-x-[50px] justify-center w-full">
-                <button id="select-x-btn"
-                    class="bg-black/30 hover:bg-[var(--cell-hover-bg)] text-[var(--text-color)] font-bold py-6 px-10 rounded-md shadow-md transform transition-transform duration-200 hover:scale-105 active:scale-95 fade-in active:bg-red-500 text-2xl">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-                <button id="select-o-btn"
-                    class="bg-black/30 hover:bg-[var(--cell-hover-bg)] text-[var(--text-color)] font-bold py-6 px-10 rounded-md shadow-md transform transition-transform duration-200 hover:scale-105 active:scale-95 fade-in active:bg-blue-500 text-2xl">
-                    <i class="fa-solid fa-o"></i>
-                </button>
-            </div>
-        </div>
-
-        <div id="game-screen" class="hidden flex flex-col items-center justify-center w-full">
-            <div
-                class="flex flex-col sm:flex-row justify-between items-center w-[320px] sm:w-[400px] px-2 mb-[50px] text-[var(--text-color)] gap-y-4 sm:gap-y-0 sm:gap-x-[40px]">
-                <!-- Player Symbol -->
-                <div class="flex items-center bg-black/30 rounded-md shadow-lg px-3 py-2">
-                    <span class="font-semibold text-base">You :</span>
-                    <span id="player-symbol-display"
-                        class="ml-2 font-bold text-2xl px-3 py-1 flex items-center justify-center"></span>
-                </div>
-
-                <!-- AI Symbol -->
-                <div class="flex items-center bg-black/30 rounded-md shadow-lg px-3 py-2">
-                    <span class="font-semibold text-base">AI :</span>
-                    <span id="ai-symbol-display"
-                        class="ml-2 font-bold text-2xl px-3 py-1 flex items-center justify-center"></span>
-                </div>
-            </div>
-
-
-            <div id="game-board" class="grid grid-cols-3 gap-4 w-[320px] h-[320px]">
-                <div class="cell" data-index="0"></div>
-                <div class="cell" data-index="1"></div>
-                <div class="cell" data-index="2"></div>
-                <div class="cell" data-index="3"></div>
-                <div class="cell" data-index="4"></div>
-                <div class="cell" data-index="5"></div>
-                <div class="cell" data-index="6"></div>
-                <div class="cell" data-index="7"></div>
-                <div class="cell" data-index="8"></div>
-            </div>
-
-            <div class="mt-6 flex flex-col items-center space-y-4 w-full">
-                <p id="game-status" class="text-xl font-bold text-center text-[var(--text-color)]"></p>
-            </div>
-        </div>
-
-        <div id="control-buttons" class="flex justify-center space-x-4 mt-6 w-full mb-4">
-
-            <button id="reset-btn"
-                class="hidden w-[130px] bg-[var(--startbutton-bg)] hover:bg-gray-900 text-white font-bold py-2 px-6 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105">
-                <i class="fas fa-redo mr-2"></i>Reset
-            </button>
-        </div>
-
+        <button id="start-btn"
+          class="group relative inline-flex items-center justify-center text-base sm:text-lg rounded-xl bg-[var(--startbutton-bg)] px-6 sm:px-8 py-2 sm:py-3 font-semibold text-white transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 hover:shadow-gray-600/30"
+          title="minmax-ai">
+          Play Tic Tac Toe with AI
+        </button>
+      </div>
     </div>
 
-    <div id="result-popup" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
-        <div class="bg-gray-800 p-8 rounded-xl shadow-2xl text-center relative w-full max-w-xs">
-            <button id="close-popup-btn" class="absolute top-2 right-2 text-gray-400 hover:text-white">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-            <h3 id="result-message" class="text-2xl font-bold mb-4"></h3>
-            <p id="winner-info" class="text-xl font-semibold mb-6"></p>
-            <button id="play-again-btn"
-                class="bg-white/30 hover:bg-gray-900 text-black hover:text-white font-bold py-2 px-6 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105">
-                Play Again
-            </button>
-        </div>
+    <!-- Symbol Select Screen -->
+    <div id="symbol-select-screen" class="hidden flex-col items-center space-y-4 w-full">
+      <p class="text-sm sm:text-base font-semibold text-center text-[var(--text-color)]">Select Your Symbol</p>
+      <div class="flex space-x-[30px] justify-center w-full">
+        <button id="select-x-btn"
+          class="bg-black/30 hover:bg-[var(--cell-hover-bg)] text-[var(--text-color)] font-bold py-6 px-8 sm:px-10 rounded-md shadow-md transform transition-transform duration-200 hover:scale-105 active:scale-95 fade-in active:bg-red-500 text-2xl">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button id="select-o-btn"
+          class="bg-black/30 hover:bg-[var(--cell-hover-bg)] text-[var(--text-color)] font-bold py-6 px-8 sm:px-10 rounded-md shadow-md transform transition-transform duration-200 hover:scale-105 active:scale-95 fade-in active:bg-blue-500 text-2xl">
+          <i class="fa-solid fa-o"></i>
+        </button>
+      </div>
     </div>
-    <br>
-    <a href="./rules.html"
-        class="fixed bottom-[8%] bg-[var(--startbutton-bg)] hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105 active:scale-95 fade-in w-[130px] text-center">
-        Game Rules
-    </a>
-    <footer class="bottom-0 w-full pb-2 absolute">
-        <div class="text-center text-gray-500 mt-8">
-            <p class="text-[12px]">&copy; Designed and Developed with <i class="fas fa-heart text-red-500"></i> by <a
-                    href="
-                https://github.com/jakirvk18" target="_blank" class="hover:text-red-500">Jakir Hussain</a>
-            </p>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="hidden flex flex-col items-center justify-center w-full">
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center w-full max-w-[400px] px-2 mb-[50px] text-[var(--text-color)] gap-y-4 sm:gap-y-0 sm:gap-x-[40px]">
+        <div class="flex items-center bg-black/30 rounded-md shadow-lg px-3 py-2">
+          <span class="font-semibold text-sm sm:text-base">You :</span>
+          <span id="player-symbol-display"
+            class="ml-2 font-bold text-2xl px-3 py-1 flex items-center justify-center"></span>
         </div>
-    </footer>
-    <script src="script.js"></script>
+        <div class="flex items-center bg-black/30 rounded-md shadow-lg px-3 py-2">
+          <span class="font-semibold text-sm sm:text-base">AI :</span>
+          <span id="ai-symbol-display"
+            class="ml-2 font-bold text-2xl px-3 py-1 flex items-center justify-center"></span>
+        </div>
+      </div>
+
+      <!-- Game Board -->
+      <div id="game-board"
+        class="grid grid-cols-3 gap-3 sm:gap-4 w-[240px] sm:w-[300px] md:w-[320px] aspect-square">
+        <div class="cell" data-index="0"></div>
+        <div class="cell" data-index="1"></div>
+        <div class="cell" data-index="2"></div>
+        <div class="cell" data-index="3"></div>
+        <div class="cell" data-index="4"></div>
+        <div class="cell" data-index="5"></div>
+        <div class="cell" data-index="6"></div>
+        <div class="cell" data-index="7"></div>
+        <div class="cell" data-index="8"></div>
+      </div>
+
+      <!-- Status -->
+      <div class="mt-6 flex flex-col items-center space-y-4 w-full">
+        <p id="game-status" class="text-base sm:text-xl font-bold text-center text-[var(--text-color)]"></p>
+      </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div id="control-buttons" class="flex justify-center space-x-4 mt-6 w-full mb-4">
+      <button id="reset-btn"
+        class="hidden w-[130px] bg-[var(--startbutton-bg)] hover:bg-gray-900 text-white font-bold py-2 px-6 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105">
+        <i class="fas fa-redo mr-2"></i>Reset
+      </button>
+    </div>
+  </div>
+
+  <!-- Result Popup -->
+  <div id="result-popup"
+    class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center p-4">
+    <div class="bg-gray-800 px-4 py-6 sm:p-8 rounded-xl shadow-2xl text-center relative w-full max-w-[90vw] sm:max-w-xs">
+      <button id="close-popup-btn" class="absolute top-2 right-2 text-gray-400 hover:text-white">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+      <h3 id="result-message" class="text-xl sm:text-2xl font-bold mb-4"></h3>
+      <p id="winner-info" class="text-lg sm:text-xl font-semibold mb-6"></p>
+      <button id="play-again-btn"
+        class="bg-white/30 hover:bg-gray-900 text-black hover:text-white font-bold py-2 px-6 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105">
+        Play Again
+      </button>
+    </div>
+  </div>
+
+  <!-- Game Rules Button -->
+  <a href="./rules.html"
+    class="fixed bottom-[8%] bg-[var(--startbutton-bg)] hover:bg-gray-900 text-white font-bold py-2 px-4 rounded-md shadow-lg transform transition-transform duration-200 hover:scale-105 active:scale-95 fade-in w-[130px] text-center">
+    Game Rules
+  </a>
+
+  <!-- Footer -->
+  <footer class="bottom-0 w-full pb-2 mt-8 sm:mt-16 absolute">
+    <div class="text-center text-gray-500">
+      <p class="text-[12px]">&copy; Designed and Developed with <i class="fas fa-heart text-red-500"></i> by <a
+          href="https://github.com/jakirvk18" target="_blank" class="hover:text-red-500">Jakir Hussain</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 
 </html>
