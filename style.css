@@ -1,0 +1,116 @@
+:root {
+    --bg-image: url('./images/bg-dark.png');
+    --bg-color: #1a202c;
+    --text-color: #ffffff;
+    --container-bg: #2d3748;
+    --board-border: #4a5568;
+    --cell-bg: #4a556880;
+    /* Transparent dark */
+    --cell-hover-bg: #6b7280;
+    --primary-color: #60a5fa;
+    /* blue-400 */
+    --buttons-bg: #ffffff3f;
+    --startbutton-bg: #f9f9f93f;
+    --x-color: #ef4444;
+    /* red-500 */
+    --o-color: #3b82f6;
+    /* blue-500 */
+}
+
+.light-theme {
+    --bg-image: url('./images/bg-light.png');
+    --bg-color: #f7fafc;
+    --text-color: #1a202c;
+    --container-bg: #edf2f7;
+    --board-border: #cbd5e0;
+    --cell-bg: #cbd5e080;
+    /* Transparent light */
+    --cell-hover-bg: #e2e8f0;
+    --primary-color: #4299e1;
+    /* blue-500 */
+    --buttons-bg: #00000029;
+    --startbutton-bg: #000000d4;
+    --x-color: #ef4444;
+    /* red-500 */
+    --o-color: #3b82f6;
+    /* blue-500 */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-color);
+    transition: background-image 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    transition: all 0.2s ease-in-out;
+    background-color: var(--cell-bg);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.cell:hover {
+    background-color: var(--cell-hover-bg);
+    transform: scale(1.05);
+}
+
+.cell:active {
+    transform: scale(0.95);
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 2.5rem;
+    }
+}
+
+.luckiest-font {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.beats {
+    animation: beat 2s infinite;
+}
+
+@keyframes beat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(0.95);
+    }
+}
